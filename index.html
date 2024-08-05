@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Grade Finde</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0a9a9;
+        }
+        .container {
+            background-color: #645151;
+            color: #f0a9a9;
+            padding: 20px;
+            border-radius: 25px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: #ed9191;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Find Your Grade</h1>
+        <form id="gradeForm">
+            <label for="marks">Enter your marks:</label>
+            <input type="number" id="marks" name="marks" required>
+            <button type="submit">Submit</button>
+        </form>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        document.getElementById("gradeForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const marks = parseInt(document.getElementById("marks").value);
+            let grade = '';
+            let resultText = '';
+
+            if (marks >= 90 && marks <= 100) {
+                grade = 'A+';
+            } else if (marks >= 80 && marks <= 89) {
+                grade = 'A';
+            } else if (marks >= 70 && marks <= 79) {
+                grade = 'B+';
+            } else if (marks >= 60 && marks <= 69) {
+                grade = 'B';
+            } else if (marks >= 50 && marks <= 59) {
+                grade = 'C+';
+            } else if (marks >= 40 && marks <= 49) {
+                grade = 'C';
+            } else if (marks >= 30 && marks <= 39) {
+                grade = 'D+';
+            } else if (marks >= 20 && marks <= 29) {
+                grade = 'D';
+            } else if (marks < 20) {
+                grade = 'E';
+            }
+
+            if (marks >= 30) {
+                resultText = `You passed with grade ${grade}`;
+            } else {
+                resultText = `You failed with grade ${grade}`;
+            }
+
+            document.getElementById("result").textContent = resultText;
+        });
+    </script>
+</body>
+</html>
